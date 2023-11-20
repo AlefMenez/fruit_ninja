@@ -20,6 +20,11 @@ class GameOverRoute extends Route {
 
   @override
   void onPop(Route nextRoute) {
+    final routeChildren = nextRoute.children.whereType<Game>();
+    if (routeChildren.isNotEmpty) {
+      final gamePage = routeChildren.first;
+      gamePage.removeAll(gamePage.children);
+    }
     nextRoute
       ..resumeTime()
       ..removeRenderEffect();
@@ -60,5 +65,7 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<Game> {
   bool containsLocalPoint(Vector2 point) => true;
 
   @override
-  void onTapUp(TapUpEvent event) => game.router..pop()..pushNamed('home', replace: true);
+  void onTapUp(TapUpEvent event) => game.router
+    ..pop()
+    ..pushNamed('home', replace: true);
 }

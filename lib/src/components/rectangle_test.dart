@@ -27,13 +27,13 @@ class RectangleTest extends RectangleComponent {
     angle += .5 * dt;
     angle %= 2 * pi;
 
-    // position +=
-    //     Vector2(0, -(velocity.y * dt - .5 * AppConfig.gravity * dt * dt));
-    // velocity.y += (AppConfig.acceleration + AppConfig.gravity) * dt;
+    position +=
+        Vector2(0, -(velocity.y * dt - .5 * AppConfig.gravity * dt * dt));
+    velocity.y += (AppConfig.acceleration + AppConfig.gravity) * dt;
 
-    // if ((position.y - AppConfig.objSize) > pageSize.y) {
-    //   removeFromParent();
-    // }
+    if ((position.y - AppConfig.objSize) > pageSize.y) {
+      removeFromParent();
+    }
   }
 
   void touchAtPoint(Vector2 vector2) {
