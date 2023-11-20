@@ -7,7 +7,10 @@ import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
 import 'package:fruit_ninja/src/components/rectangle_test.dart';
 import 'package:fruit_ninja/src/config/app_config.dart';
+import 'package:fruit_ninja/src/routes/game_over_page.dart';
+import 'package:fruit_ninja/src/routes/game_page.dart';
 import 'package:fruit_ninja/src/routes/home_page.dart';
+import 'package:fruit_ninja/src/routes/pause_game.dart';
 
 class Game extends FlameGame {
   late final RouterComponent router;
@@ -22,14 +25,14 @@ class Game extends FlameGame {
         parallax: Parallax([await ParallaxLayer.load(ParallaxImageData('bg.jpg'))])
       ),
       router = RouterComponent(initialRoute: 'home', routes: {
-        'home' : Route(HomePage.new)
+        'home' : Route(HomePage.new),
+        'game-page': Route(GamePage.new),
+        'pause' : PauseRoute(),
+        'game-over' : GameOverRoute()
       })
 
     ]);
-    add(RectangleTest(size / 2,
-        //Vector2(size.x / 2, size.y),
-        pageSize: size,
-        velocity: Vector2(0, maxVerticalVelocity)));
+    
   }
 
   // @override

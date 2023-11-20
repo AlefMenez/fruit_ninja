@@ -15,8 +15,9 @@ class HomePage extends Component with HasGameReference<Game> {
         onPressed: () {
           game.router.pushNamed('game-page');
         },
-        color: Colors.blue,
-        borderColor: Colors.white));
+        color: Colors.red,
+        borderColor: Colors.white,
+        ));
   }
 
   @override
